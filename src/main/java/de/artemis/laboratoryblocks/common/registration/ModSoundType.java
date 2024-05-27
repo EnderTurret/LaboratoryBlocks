@@ -10,5 +10,4 @@ public class ModSoundType {
             ModSoundEvents.LABORATORY_BLOCK_PLACE,
             ModSoundEvents.LABORATORY_BLOCK_HIT,
             ModSoundEvents.LABORATORY_BLOCK_FALL);
-
 }

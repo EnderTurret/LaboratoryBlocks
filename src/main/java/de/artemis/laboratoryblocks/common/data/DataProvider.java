@@ -26,7 +26,6 @@ public class DataProvider {
         generator.addProvider(true, new LanguageProvider(generator.getPackOutput(), "en_us"));
         generator.addProvider(true, new BlockLootTablesProvider(generator.getPackOutput()));
         generator.addProvider(true, new RecipesProvider(generator.getPackOutput()));
-        generator.addProvider(true, new SoundEventProvider(generator.getPackOutput(), existingFileHelper));
         generator.addProvider(true, new TagsProvider.BlockTagsProvider(generator.getPackOutput(), future, existingFileHelper));
         generator.addProvider(true, new TagsProvider.ItemTagsProvider(generator.getPackOutput(), future, existingFileHelper));
         generator.addProvider(true, new FusionModelProvider(generator.getPackOutput()));

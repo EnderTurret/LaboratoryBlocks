@@ -1,15 +1,16 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:laboratory_block"
+      "item": "laboratoryblocks:pla_sheets"
     },
-    "title": "Welcome to the Lab",
-    "description": "Obtain your first Laboratory Block",
+    "title": "Lab Assistant",
+    "description": "Craft a PLA Sheet",
     "background": "laboratoryblocks:textures/misc/advancements_background.png",
     "frame": "task",
     "announce_to_chat": true,
     "hidden": false
   },
+  "parent": "laboratoryblocks:welcome_to_the_lab",
   "criteria": {
     "": {
       "trigger": "minecraft:inventory_changed",
@@ -17,7 +18,7 @@
         "items": [
           {
             "items": [
-              "laboratoryblocks:laboratory_block"
+              "laboratoryblocks:pla_sheets"
             ],
             "count": 1
           }

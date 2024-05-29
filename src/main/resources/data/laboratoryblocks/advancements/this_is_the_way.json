@@ -1,16 +1,16 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:enlighted_laboratory_glass"
+      "item": "laboratoryblocks:right-faced_green_signaling_laboratory_block"
     },
-    "title": "It glows?",
-    "description": "Place your first enlighted block of Laboratory Glass",
+    "title": "This is the way",
+    "description": "Place your first Right Facing Green Signaling Laboratory block",
     "background": "laboratoryblocks:textures/misc/advancements_background.png",
-    "frame": "goal",
+    "frame": "task",
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "laboratoryblocks:glassworking",
+  "parent": "laboratoryblocks:show_me_the_way",
   "criteria": {
     "": {
       "trigger": "minecraft:placed_block",
@@ -18,7 +18,7 @@
         "location": [
           {
             "condition": "minecraft:block_state_property",
-            "block": "laboratoryblocks:enlighted_laboratory_glass",
+            "block": "laboratoryblocks:right-faced_green_signaling_laboratory_block",
             "properties": {}
           }
         ]

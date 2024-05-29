@@ -1,16 +1,16 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:enlighted_laboratory_glass"
+      "item": "laboratoryblocks:gray_laboratory_tiles"
     },
-    "title": "It glows?",
-    "description": "Place your first enlighted block of Laboratory Glass",
+    "title": "I said, show me the real tile",
+    "description": "Place your first Gray Laboratory Tile",
     "background": "laboratoryblocks:textures/misc/advancements_background.png",
-    "frame": "goal",
+    "frame": "task",
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "laboratoryblocks:glassworking",
+  "parent": "laboratoryblocks:show_me_the_real_tile",
   "criteria": {
     "": {
       "trigger": "minecraft:placed_block",
@@ -18,7 +18,7 @@
         "location": [
           {
             "condition": "minecraft:block_state_property",
-            "block": "laboratoryblocks:enlighted_laboratory_glass",
+            "block": "laboratoryblocks:gray_laboratory_tiles",
             "properties": {}
           }
         ]

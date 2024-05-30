@@ -104,6 +104,12 @@ public class ModBlocks {
     public static final RegistryObject<LaboratoryBlock> ENLIGHTED_RIGHT_FACED_GREEN_SIGNALING_LABORATORY_BLOCK = register("enlighted_right-faced_green_signaling_laboratory_block",
             () -> new LaboratoryBlock(ModBlocks.RIGHT_FACED_GREEN_SIGNALING_LABORATORY_BLOCK, BlockBehaviour.Properties.of().strength(2.5F, 3.0F).sound(ModSoundType.LABORATORY_BLOCK).lightLevel((p_187433_) -> 14)));
 
+    public static final RegistryObject<LaboratoryBlock> LABORATORY_BOOKSHELF = register("laboratory_bookshelf",
+            () -> new LaboratoryBlock(ModBlocks.ENLIGHTED_LABORATORY_BOOKSHELF, BlockBehaviour.Properties.of().strength(1.5F, 3.0F).sound(ModSoundType.LABORATORY_BLOCK)));
+
+    public static final RegistryObject<LaboratoryBlock> ENLIGHTED_LABORATORY_BOOKSHELF = register("enlighted_laboratory_bookshelf",
+            () -> new LaboratoryBlock(ModBlocks.LABORATORY_BOOKSHELF, BlockBehaviour.Properties.of().strength(1.5F, 3.0F).sound(ModSoundType.LABORATORY_BLOCK).lightLevel((p_187433_) -> 14)));
+
     public static final RegistryObject<LaboratoryBlock> LABORATORY_VENT = register("laboratory_vent",
             () -> new LaboratoryBlock(ModBlocks.ENLIGHTED_LABORATORY_VENT, BlockBehaviour.Properties.of().strength(2.5F, 3.0F).sound(ModSoundType.LABORATORY_BLOCK)));
 

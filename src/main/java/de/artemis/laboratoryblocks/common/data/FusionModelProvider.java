@@ -71,6 +71,26 @@ public class FusionModelProvider extends com.supermartijn642.fusion.api.provider
 
 
 
+        var modelDataLaboratoryBookshelf = ConnectingModelDataBuilder.builder()
+                .parent(new ResourceLocation("minecraft", "block/cube_column"))
+                .texture("side", new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/laboratory_bookshelf-fusion"))
+                .texture("end", new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/laboratory_bookshelf_top-fusion"))
+                .connection(DefaultConnectionPredicates.isSameBlock().or(DefaultConnectionPredicates.matchBlock(ModBlocks.ENLIGHTED_LABORATORY_BOOKSHELF.get())))
+                .build();
+        var modelInstanceLaboratoryBookshelf = ModelInstance.of(DefaultModelTypes.CONNECTING, modelDataLaboratoryBookshelf);
+        this.addModel(new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/laboratory_bookshelf"), modelInstanceLaboratoryBookshelf);
+
+        var modelDataEnlightedLaboratoryBookshelf = ConnectingModelDataBuilder.builder()
+                .parent(new ResourceLocation("minecraft", "block/cube_column"))
+                .texture("side", new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/laboratory_bookshelf-fusion"))
+                .texture("end", new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/laboratory_bookshelf_top-fusion"))
+                .connection(DefaultConnectionPredicates.isSameBlock().or(DefaultConnectionPredicates.matchBlock(ModBlocks.LABORATORY_BOOKSHELF.get())))
+                .build();
+        var modelInstanceEnlightedLaboratoryBookshelf = ModelInstance.of(DefaultModelTypes.CONNECTING, modelDataEnlightedLaboratoryBookshelf);
+        this.addModel(new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/enlighted_laboratory_bookshelf"), modelInstanceEnlightedLaboratoryBookshelf);
+
+
+
         var modelDataClearLaboratoryScreen = ConnectingModelDataBuilder.builder()
                 .parent(new ResourceLocation("minecraft", "block/cube_all"))
                 .texture("all", new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/clear_laboratory_screen-fusion"))

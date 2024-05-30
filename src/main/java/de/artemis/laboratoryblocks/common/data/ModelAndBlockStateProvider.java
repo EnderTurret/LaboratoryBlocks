@@ -77,12 +77,8 @@ public class ModelAndBlockStateProvider extends BlockStateProvider {
         block(ModBlocks.ENLIGHTED_SCREWED_LABORATORY_BLOCK.get(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/screwed_laboratory_block"));
         simpleBlock(ModBlocks.LABORATORY_VENT.get());
         block(ModBlocks.ENLIGHTED_LABORATORY_VENT.get(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/laboratory_vent"));
-
-
         simpleBlock(ModBlocks.LABORATORY_VENT_CONNECTING.get());
         block(ModBlocks.ENLIGHTED_LABORATORY_VENT_CONNECTING.get(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/laboratory_vent_connecting"));
-
-
         simpleBlock(ModBlocks.CLEAR_LABORATORY_SCREEN.get());
         block(ModBlocks.ENLIGHTED_CLEAR_LABORATORY_SCREEN.get(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/clear_laboratory_screen"));
         simpleBlock(ModBlocks.LEFT_FACED_BLUE_SIGNALING_LABORATORY_BLOCK.get());
@@ -110,6 +106,8 @@ public class ModelAndBlockStateProvider extends BlockStateProvider {
         pillarBlock(ModBlocks.ENLIGHTED_LABORATORY_PILLAR.get(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/laboratory_pillar"), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/laboratory_pillar_top"));
         pillarBlock(ModBlocks.GRAY_LABORATORY_PILLAR.get(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/gray_laboratory_pillar"), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/gray_laboratory_pillar_top"));
         pillarBlock(ModBlocks.ENLIGHTED_GRAY_LABORATORY_PILLAR.get(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/gray_laboratory_pillar"), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/gray_laboratory_pillar_top"));
+        pillarBlock(ModBlocks.LABORATORY_BOOKSHELF.get(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/laboratory_bookshelf"), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/laboratory_bookshelf_top"));
+        pillarBlock(ModBlocks.ENLIGHTED_LABORATORY_BOOKSHELF.get(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/laboratory_bookshelf"), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/laboratory_bookshelf_top"));
 
         carpetBlock(ModBlocks.PLA_FLOORING.get(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/pla_block"));
         carpetBlock(ModBlocks.ENLIGHTED_PLA_FLOORING.get(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/pla_block"));

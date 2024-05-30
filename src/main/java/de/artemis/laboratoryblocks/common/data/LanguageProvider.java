@@ -117,5 +117,7 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
         add(ModBlocks.ENLIGHTED_GRAY_LABORATORY_PILLAR.get(), "Enlighted Gray Laboratory Pillar");
         add(ModBlocks.LABORATORY_FAN_REDSTONE_CONTROLLED.get(), "Laboratory Fan (Redstone Controlled)");
         add(ModBlocks.ENLIGHTED_LABORATORY_FAN_REDSTONE_CONTROLLED.get(), "Enlighted Laboratory Fan (Redstone Controlled)");
+        add(ModBlocks.LABORATORY_BOOKSHELF.get(), "Laboratory Bookshelf");
+        add(ModBlocks.ENLIGHTED_LABORATORY_BOOKSHELF.get(), "Enlighted Laboratory Bookshelf");
     }
 }

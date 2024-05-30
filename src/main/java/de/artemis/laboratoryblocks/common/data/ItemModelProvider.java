@@ -113,6 +113,8 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
         cubeColumn(ForgeRegistries.BLOCKS.getKey(ModBlocks.ENLIGHTED_LABORATORY_PILLAR.get()).toString(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/enlighted_laboratory_pillar"), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/enlighted_laboratory_pillar_top"));
         simpleBlock(ModBlocks.GRAY_LABORATORY_PILLAR.get());
         cubeColumn(ForgeRegistries.BLOCKS.getKey(ModBlocks.ENLIGHTED_GRAY_LABORATORY_PILLAR.get()).toString(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/enlighted_gray_laboratory_pillar"), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/enlighted_gray_laboratory_pillar_top"));
+        simpleBlock(ModBlocks.LABORATORY_BOOKSHELF.get());
+        cubeColumn(ForgeRegistries.BLOCKS.getKey(ModBlocks.ENLIGHTED_LABORATORY_BOOKSHELF.get()).toString(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/enlighted_laboratory_bookshelf"), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/enlighted_laboratory_bookshelf_top"));
 
         carpet(ForgeRegistries.BLOCKS.getKey(ModBlocks.PLA_FLOORING.get()).toString(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/pla_block"));
         carpet(ForgeRegistries.BLOCKS.getKey(ModBlocks.ENLIGHTED_PLA_FLOORING.get()).toString(), new ResourceLocation(LaboratoryBlocks.MOD_ID, "block/enlighted_pla_block"));

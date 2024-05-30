@@ -1,4 +1,4 @@
-// 1.20.1	2024-05-28T00:18:27.5986215	Fusion Model Provider: Artemis' Laboratory Blocks
+// 1.20.1	2024-05-30T15:31:14.5193334	Fusion Model Provider: Artemis' Laboratory Blocks
 c892d61e092b2d5101faa826d3415751bd00286c assets/laboratoryblocks/models/block/acacia_laboratory_floor.json
 6cee35ad689a6df3b3dcae37ae54bc3f501cfa9a assets/laboratoryblocks/models/block/acacia_laboratory_tiles.json
 253e60b21d16062a9c1186d3af474c0e2a4f2f34 assets/laboratoryblocks/models/block/bamboo_laboratory_floor.json
@@ -29,6 +29,7 @@ f3d12c5d335c2bdff3f07100ce5a6eac9604833c assets/laboratoryblocks/models/block/en
 484170e19117af0e13c763e9f44827f56e256813 assets/laboratoryblocks/models/block/enlighted_jungle_laboratory_floor.json
 97580f6fe084232310c8118fa602603c595567fa assets/laboratoryblocks/models/block/enlighted_jungle_laboratory_tiles.json
 99857d0bc4e4dacb67dd20b7cc63defa1fa4ec29 assets/laboratoryblocks/models/block/enlighted_laboratory_block.json
+22b0708818761294b428c8a433913ea1c3bfaa7c assets/laboratoryblocks/models/block/enlighted_laboratory_bookshelf.json
 77d76b61533f4e1043f21f9fa2e40da3cead1b4d assets/laboratoryblocks/models/block/enlighted_laboratory_glass.json
 f2ed4310698f5732366c74378957ca41db8193bb assets/laboratoryblocks/models/block/enlighted_laboratory_tiles.json
 cd3a3e90bdc67fdef687bdd1effe64fc56dfc770 assets/laboratoryblocks/models/block/enlighted_laboratory_vent.json
@@ -53,6 +54,7 @@ befb47dd82c7d9d44346e56ad30788a4264af289 assets/laboratoryblocks/models/block/en
 0c453c256a34cbe66f94361fcc793e8a12400875 assets/laboratoryblocks/models/block/jungle_laboratory_floor.json
 9e14335051377461ed73cc75c6ddcb61c1169b12 assets/laboratoryblocks/models/block/jungle_laboratory_tiles.json
 e36e9a56cfdc0bbb4624864e0498c67f3622f5c3 assets/laboratoryblocks/models/block/laboratory_block.json
+c4f63f9a63af7a8194f365711c42632a9bfbe960 assets/laboratoryblocks/models/block/laboratory_bookshelf.json
 77d76b61533f4e1043f21f9fa2e40da3cead1b4d assets/laboratoryblocks/models/block/laboratory_glass.json
 d04f3fa3ffcd590c6604159b45f22bdf24c953c1 assets/laboratoryblocks/models/block/laboratory_tiles.json
 e1e42f71674ffb0251852ae6c644699be9c9ba9d assets/laboratoryblocks/models/block/laboratory_vent.json

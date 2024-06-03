@@ -28,22 +28,29 @@ public class RedstoneControlledLaboratoryBlock extends Block {
     private final Supplier<RedstoneControlledLaboratoryBlock> glowstone_block;
     private final Supplier<RedstoneControlledLaboratoryBlock> redstone_block;
     public static final BooleanProperty POWERED = BooleanProperty.create("powered");
+    public static final BooleanProperty INVERTED = BooleanProperty.create("inverted");
 
     public RedstoneControlledLaboratoryBlock(Supplier<RedstoneControlledLaboratoryBlock> glowstone_block, Supplier<RedstoneControlledLaboratoryBlock> redstone_block, Properties properties) {
         super(properties);
         this.glowstone_block = glowstone_block;
         this.redstone_block = redstone_block;
-        this.registerDefaultState(this.defaultBlockState().setValue(POWERED, Boolean.valueOf(false)));
-
+        this.registerDefaultState(this.defaultBlockState().setValue(POWERED, false).setValue(INVERTED, false));
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public void neighborChanged(@NotNull BlockState blockState, Level level, @NotNull BlockPos blockPos, @NotNull Block block, @NotNull BlockPos pNeighborPos, boolean isMoving) {
+        boolean inverted = blockState.getValue(INVERTED);
+        boolean powered = blockState.getValue(POWERED);
+        boolean shouldBePowered = level.hasNeighborSignal(blockPos);
+
+        if (inverted) {
+            shouldBePowered = !shouldBePowered;
+        }
+
         if (!level.isClientSide) {
-            boolean flag = blockState.getValue(POWERED);
-            if (flag != level.hasNeighborSignal(blockPos)) {
-                if (flag) {
+            if (powered != shouldBePowered) {
+                if (powered) {
                     level.scheduleTick(blockPos, this, 4);
                 } else {
                     level.setBlock(blockPos, blockState.cycle(POWERED), 2);
@@ -55,7 +62,14 @@ public class RedstoneControlledLaboratoryBlock extends Block {
     @SuppressWarnings("deprecation")
     @Override
     public void tick(BlockState blockState, @NotNull ServerLevel serverLevel, @NotNull BlockPos blockPos, @NotNull RandomSource randomSource) {
-        if (blockState.getValue(POWERED) && !serverLevel.hasNeighborSignal(blockPos)) {
+        boolean inverted = blockState.getValue(INVERTED);
+        boolean shouldBePowered = serverLevel.hasNeighborSignal(blockPos);
+
+        if (inverted) {
+            shouldBePowered = !shouldBePowered;
+        }
+
+        if (blockState.getValue(POWERED) && !shouldBePowered) {
             serverLevel.setBlock(blockPos, blockState.cycle(POWERED), 2);
         }
     }
@@ -66,6 +80,33 @@ public class RedstoneControlledLaboratoryBlock extends Block {
         ItemStack itemStackInHand = player.getItemInHand(interactionHand);
 
         if (itemStackInHand.is(ModItems.GLOWSTONE_PARTICLES.get()) || itemStackInHand.is(ModItems.CONFIGURATION_TOOL.get()) || itemStackInHand.is(ModItems.REDSTONE_PARTICLES.get())) {
+
+            // Reversing Redstone Control
+            if (itemStackInHand.is(ModItems.CONFIGURATION_TOOL.get()) && blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("redstone")) {
+                level.setBlock(blockPos, blockState.cycle(INVERTED), 2);
+                level.scheduleTick(blockPos, this, 4);
+                level.blockUpdated(blockPos, blockState.getBlock());
+
+                level.playSound(player, blockPos, SoundEvents.BONE_BLOCK_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+                for (float i = 0; i <= 1; i += 0.2F) {
+                    level.addParticle(ModParticles.APPLYING_REDSTONE_PARTICLE.get(), blockPos.getX() + i, blockPos.getY(), blockPos.getZ(), 0, 0, 0);
+                    level.addParticle(ModParticles.APPLYING_REDSTONE_PARTICLE.get(), blockPos.getX() + i, blockPos.getY() + 1, blockPos.getZ(), 0, 0, 0);
+                    level.addParticle(ModParticles.APPLYING_REDSTONE_PARTICLE.get(), blockPos.getX(), blockPos.getY() + i, blockPos.getZ(), 0, 0, 0);
+                    level.addParticle(ModParticles.APPLYING_REDSTONE_PARTICLE.get(), blockPos.getX() + 1, blockPos.getY() + i, blockPos.getZ(), 0, 0, 0);
+                    level.addParticle(ModParticles.APPLYING_REDSTONE_PARTICLE.get(), blockPos.getX() + i, blockPos.getY(), blockPos.getZ() + 1, 0, 0, 0);
+                    level.addParticle(ModParticles.APPLYING_REDSTONE_PARTICLE.get(), blockPos.getX() + i, blockPos.getY() + 1, blockPos.getZ() + 1, 0, 0, 0);
+                    level.addParticle(ModParticles.APPLYING_REDSTONE_PARTICLE.get(), blockPos.getX(), blockPos.getY() + i, blockPos.getZ() + 1, 0, 0, 0);
+                    level.addParticle(ModParticles.APPLYING_REDSTONE_PARTICLE.get(), blockPos.getX() + 1, blockPos.getY() + i, blockPos.getZ() + 1, 0, 0, 0);
+                    level.addParticle(ModParticles.APPLYING_REDSTONE_PARTICLE.get(), blockPos.getX(), blockPos.getY(), blockPos.getZ() + i, 0, 0, 0);
+                    level.addParticle(ModParticles.APPLYING_REDSTONE_PARTICLE.get(), blockPos.getX() + 1, blockPos.getY(), blockPos.getZ() + i, 0, 0, 0);
+                    level.addParticle(ModParticles.APPLYING_REDSTONE_PARTICLE.get(), blockPos.getX(), blockPos.getY() + 1, blockPos.getZ() + i, 0, 0, 0);
+                    level.addParticle(ModParticles.APPLYING_REDSTONE_PARTICLE.get(), blockPos.getX() + 1, blockPos.getY() + 1, blockPos.getZ() + i, 0, 0, 0);
+                }
+
+                return InteractionResult.SUCCESS;
+
+            }
 
             // Applying Glowstone
             if (itemStackInHand.is(ModItems.GLOWSTONE_PARTICLES.get()) && !blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("enlighted")) {
@@ -120,7 +161,7 @@ public class RedstoneControlledLaboratoryBlock extends Block {
             }
 
             // Removing Glowstone
-            if (itemStackInHand.is(ModItems.CONFIGURATION_TOOL.get()) && blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("enlighted") && !KeyBindingUtil.isKeyPressed(ModKeyBindings.ALTERNATIVE_CONFIGURATION_TOOL_ACTION)) {
+            if (itemStackInHand.is(ModItems.CONFIGURATION_TOOL.get()) && blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("enlighted") && KeyBindingUtil.isKeyPressed(ModKeyBindings.REMOVE_GLOWSTONE_CONFIGURATION_TOOL_ACTION)) {
                 if (!player.isCreative()) {
                     if (!player.getInventory().add(new ItemStack(ModItems.GLOWSTONE_PARTICLES.get()))) {
                         ItemEntity itemEntity = new ItemEntity(level, blockPos.getX() + 0.5F, blockPos.getY() + 1.0F, blockPos.getZ() + 0.5F, new ItemStack(ModItems.GLOWSTONE_PARTICLES.get()));
@@ -152,7 +193,7 @@ public class RedstoneControlledLaboratoryBlock extends Block {
             }
 
             // Removing Redstone
-            if (itemStackInHand.is(ModItems.CONFIGURATION_TOOL.get()) && blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("redstone") && KeyBindingUtil.isKeyPressed(ModKeyBindings.ALTERNATIVE_CONFIGURATION_TOOL_ACTION)) {
+            if (itemStackInHand.is(ModItems.CONFIGURATION_TOOL.get()) && blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("redstone") && KeyBindingUtil.isKeyPressed(ModKeyBindings.REMOVE_REDSTONE_CONFIGURATION_TOOL_ACTION)) {
                 if (!player.isCreative()) {
                     if (!player.getInventory().add(new ItemStack(ModItems.REDSTONE_PARTICLES.get()))) {
                         ItemEntity itemEntity = new ItemEntity(level, blockPos.getX() + 0.5F, blockPos.getY() + 1.0F, blockPos.getZ() + 0.5F, new ItemStack(ModItems.REDSTONE_PARTICLES.get()));
@@ -190,6 +231,6 @@ public class RedstoneControlledLaboratoryBlock extends Block {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(POWERED);
+        builder.add(POWERED).add(INVERTED);
     }
 }

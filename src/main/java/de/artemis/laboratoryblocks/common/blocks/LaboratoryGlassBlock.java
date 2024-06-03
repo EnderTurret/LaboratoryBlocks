@@ -1,7 +1,9 @@
 package de.artemis.laboratoryblocks.common.blocks;
 
 import de.artemis.laboratoryblocks.common.registration.ModItems;
+import de.artemis.laboratoryblocks.common.registration.ModKeyBindings;
 import de.artemis.laboratoryblocks.common.registration.ModParticles;
+import de.artemis.laboratoryblocks.common.util.KeyBindingUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -61,7 +63,7 @@ public class LaboratoryGlassBlock extends GlassBlock {
             }
 
             // Removing Glowstone
-            else if (itemStackInHand.is(ModItems.CONFIGURATION_TOOL.get()) && blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("enlighted")) {
+            else if (itemStackInHand.is(ModItems.CONFIGURATION_TOOL.get()) && blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("enlighted") && KeyBindingUtil.isKeyPressed(ModKeyBindings.REMOVE_GLOWSTONE_CONFIGURATION_TOOL_ACTION)) {
                 if (!player.isCreative()) {
                     if (!player.getInventory().add(new ItemStack(ModItems.GLOWSTONE_PARTICLES.get()))) {
                         ItemEntity itemEntity = new ItemEntity(level, blockPos.getX() + 0.5F, blockPos.getY() + 1.0F, blockPos.getZ() + 0.5F, new ItemStack(ModItems.GLOWSTONE_PARTICLES.get()));

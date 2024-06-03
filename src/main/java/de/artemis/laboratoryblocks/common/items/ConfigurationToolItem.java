@@ -20,7 +20,7 @@ public class ConfigurationToolItem extends Item {
 
     @Override
     public void appendHoverText(@NotNull ItemStack itemStack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.laboratoryblocks.configuration_tool", ModKeyBindings.ALTERNATIVE_CONFIGURATION_TOOL_ACTION.getKey().getDisplayName().getString()).withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("tooltip.laboratoryblocks.configuration_tool",ModKeyBindings.REMOVE_GLOWSTONE_CONFIGURATION_TOOL_ACTION.getKey().getDisplayName().getString(), ModKeyBindings.REMOVE_REDSTONE_CONFIGURATION_TOOL_ACTION.getKey().getDisplayName().getString()).withStyle(ChatFormatting.GRAY));
 
         super.appendHoverText(itemStack, level, tooltip, flag);
     }

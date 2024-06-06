@@ -1,9 +1,6 @@
 package de.artemis.laboratoryblocks.common.registration;
 
-import de.artemis.laboratoryblocks.common.blocks.LaboratoryBlock;
-import de.artemis.laboratoryblocks.common.blocks.LaboratoryCarpetBlock;
-import de.artemis.laboratoryblocks.common.blocks.LaboratoryGlassBlock;
-import de.artemis.laboratoryblocks.common.blocks.RedstoneControlledLaboratoryBlock;
+import de.artemis.laboratoryblocks.common.blocks.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
@@ -105,10 +102,16 @@ public class ModBlocks {
             () -> new LaboratoryBlock(ModBlocks.RIGHT_FACED_GREEN_SIGNALING_LABORATORY_BLOCK, BlockBehaviour.Properties.of().strength(2.5F, 3.0F).sound(ModSoundType.LABORATORY_BLOCK).lightLevel((p_187433_) -> 14)));
 
     public static final RegistryObject<LaboratoryBlock> LABORATORY_BOOKSHELF = register("laboratory_bookshelf",
-            () -> new LaboratoryBlock(ModBlocks.ENLIGHTED_LABORATORY_BOOKSHELF, BlockBehaviour.Properties.of().strength(1.5F, 3.0F).sound(ModSoundType.LABORATORY_BLOCK)));
+            () -> new LaboratoryBlock(ModBlocks.ENLIGHTED_LABORATORY_BOOKSHELF, BlockBehaviour.Properties.of().strength(1.5F).sound(ModSoundType.LABORATORY_BLOCK)));
 
     public static final RegistryObject<LaboratoryBlock> ENLIGHTED_LABORATORY_BOOKSHELF = register("enlighted_laboratory_bookshelf",
-            () -> new LaboratoryBlock(ModBlocks.LABORATORY_BOOKSHELF, BlockBehaviour.Properties.of().strength(1.5F, 3.0F).sound(ModSoundType.LABORATORY_BLOCK).lightLevel((p_187433_) -> 14)));
+            () -> new LaboratoryBlock(ModBlocks.LABORATORY_BOOKSHELF, BlockBehaviour.Properties.of().strength(1.5F).sound(ModSoundType.LABORATORY_BLOCK).lightLevel((p_187433_) -> 14)));
+
+    public static final RegistryObject<ChiseledLaboratoryBookShelfBlock> CHISELED_LABORATORY_BOOKSHELF = register("chiseled_laboratory_bookshelf",
+            () -> new ChiseledLaboratoryBookShelfBlock(ModBlocks.ENLIGHTED_CHISELED_LABORATORY_BOOKSHELF, BlockBehaviour.Properties.of().strength(1.5F).sound(ModSoundType.LABORATORY_BLOCK)));
+
+    public static final RegistryObject<ChiseledLaboratoryBookShelfBlock> ENLIGHTED_CHISELED_LABORATORY_BOOKSHELF = register("enlighted_chiseled_laboratory_bookshelf",
+            () -> new ChiseledLaboratoryBookShelfBlock(ModBlocks.CHISELED_LABORATORY_BOOKSHELF, BlockBehaviour.Properties.of().strength(1.5F).sound(ModSoundType.LABORATORY_BLOCK).lightLevel((p_187433_) -> 14)));
 
     public static final RegistryObject<LaboratoryBlock> LABORATORY_VENT = register("laboratory_vent",
             () -> new LaboratoryBlock(ModBlocks.ENLIGHTED_LABORATORY_VENT, BlockBehaviour.Properties.of().strength(2.5F, 3.0F).sound(ModSoundType.LABORATORY_BLOCK)));

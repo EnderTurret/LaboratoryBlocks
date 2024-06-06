@@ -110,6 +110,9 @@ public class BlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.LABORATORY_FAN_REDSTONE_CONTROLLED.get());
         dropSelf(ModBlocks.ENLIGHTED_LABORATORY_FAN_REDSTONE_CONTROLLED.get());
 
+        dropSelf(ModBlocks.CHISELED_LABORATORY_BOOKSHELF.get());
+        dropSelf(ModBlocks.ENLIGHTED_CHISELED_LABORATORY_BOOKSHELF.get());
+
         dropWhenSilkTouch(ModBlocks.LABORATORY_GLASS.get());
         add(ModBlocks.ENLIGHTED_LABORATORY_GLASS.get(), (p_124233_) -> {
             return createSingleItemTableWithSilkTouch(p_124233_, ModItems.GLOWSTONE_PARTICLES.get(), ConstantValue.exactly(1.0F));

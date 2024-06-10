@@ -3,6 +3,7 @@ package de.artemis.laboratoryblocks.common.blocks;
 import de.artemis.laboratoryblocks.common.registration.ModItems;
 import de.artemis.laboratoryblocks.common.registration.ModKeyBindings;
 import de.artemis.laboratoryblocks.common.registration.ModParticles;
+import de.artemis.laboratoryblocks.common.registration.ModSoundEvents;
 import de.artemis.laboratoryblocks.common.util.KeyBindingUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -75,6 +76,7 @@ public class LaboratoryBlock extends Block {
                 }
                 level.setBlock(blockPos, block.get().defaultBlockState(), 3);
                 level.playSound(player, blockPos, SoundEvents.AXE_WAX_OFF, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.playSound(player, blockPos, ModSoundEvents.CONFIGURATION_TOOL_USE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 
                 for (float i = 0; i <= 1; i += 0.2F) {
                     level.addParticle(ModParticles.REMOVING_MODIFIER_PARTICLE.get(), blockPos.getX() + i, blockPos.getY(), blockPos.getZ(), 0, 0, 0);

@@ -15,10 +15,12 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
         add("itemGroup.laboratoryblocks", "Artemis' Laboratory Blocks");
         add("keybind.laboratoryblocks.category", "Artemis' Laboratory Blocks");
 
-        add("tooltip.laboratoryblocks.configuration_tool", "%s to remove Glowstone Particles and %s Right Click to remove Redstone Particles");
+        add("tooltip.laboratoryblocks.configuration_tool", "Press %s to remove Glowstone Particles and %s Right Click to remove Redstone Particles.");
+        add("tooltip.laboratoryblocks.configuration_tool_preview", "Hold %s for details.");
 
         add("keybind.laboratoryblocks.remove_redstone_configuration_tool_action", "Remove Redstone with Configuration Tool");
         add("keybind.laboratoryblocks.remove_glowstone_configuration_tool_action", "Remove Glowstone with Configuration Tool");
+        add("keybind.laboratoryblocks.show_information", "Show information");
 
         add(ModItems.STARCH.get(), "Starch");
         add(ModItems.COMPRESSED_STARCH.get(), "Compressed Starch");

@@ -13,6 +13,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -23,6 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.ChiseledBookShelfBlock;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.ChiseledBookShelfBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -46,22 +48,26 @@ public class ChiseledLaboratoryBookShelfBlock extends ChiseledBookShelfBlock {
     }
 
     @SuppressWarnings("deprecation")
-    public @NotNull InteractionResult use(@NotNull BlockState blockState, @NotNull Level level, @NotNull BlockPos blockPos, Player player, @NotNull InteractionHand interactionHand, @NotNull BlockHitResult blockHitResult) {
+    @Override
+    public @NotNull InteractionResult use(@NotNull BlockState blockState, @NotNull Level level, @NotNull BlockPos blockPos, @NotNull Player player, @NotNull InteractionHand interactionHand, @NotNull BlockHitResult blockHitResult) {
 
-        BlockEntity var8 = level.getBlockEntity(blockPos);
-        if (var8 instanceof ChiseledLaboratoryBookShelfBlockEntity $$7) {
-            Optional $$8 = getRelativeHitCoordinatesForBlockFace(blockHitResult, (Direction)blockState.getValue(HorizontalDirectionalBlock.FACING));
-            if ($$8.isEmpty()) {
+        //Vanilla Begin
+
+        BlockEntity blockEntity = level.getBlockEntity(blockPos);
+        if (blockEntity instanceof ChiseledLaboratoryBookShelfBlockEntity bookShelfBlockEntity) {
+
+            Optional optional = getRelativeHitCoordinatesForBlockFace(blockHitResult, (Direction) blockState.getValue(HorizontalDirectionalBlock.FACING));
+            if (optional.isEmpty()) {
                 return InteractionResult.PASS;
             } else {
-                int $$9 = getHitSlot((Vec2)$$8.get());
-                if ((Boolean)blockState.getValue((Property)SLOT_OCCUPIED_PROPERTIES.get($$9))) {
-                    removeBook(level, blockPos, player, $$7, $$9);
+                int hitSlot = getHitSlot((Vec2) optional.get());
+                if ((Boolean) blockState.getValue((Property) SLOT_OCCUPIED_PROPERTIES.get(hitSlot))) {
+                    removeBook(level, blockPos, player, bookShelfBlockEntity, hitSlot);
                     return InteractionResult.sidedSuccess(level.isClientSide);
                 } else {
-                    ItemStack $$10 = player.getItemInHand(interactionHand);
-                    if ($$10.is(ItemTags.BOOKSHELF_BOOKS)) {
-                        addBook(level, blockPos, player, $$7, $$10, $$9);
+                    ItemStack itemInHand = player.getItemInHand(interactionHand);
+                    if (itemInHand.is(ItemTags.BOOKSHELF_BOOKS)) {
+                        addBook(level, blockPos, player, bookShelfBlockEntity, itemInHand, hitSlot);
                         return InteractionResult.sidedSuccess(level.isClientSide);
                     } else {
                         return InteractionResult.CONSUME;
@@ -70,10 +76,9 @@ public class ChiseledLaboratoryBookShelfBlock extends ChiseledBookShelfBlock {
             }
         }
 
-        //Laborator Begin
+        //Vanilla End
 
-        ItemStack itemStackInHand = player.getItemInHand(interactionHand);
-
+        /*ItemStack itemStackInHand = player.getItemInHand(interactionHand);
         if (itemStackInHand.is(ModItems.GLOWSTONE_PARTICLES.get()) || itemStackInHand.is(ModItems.CONFIGURATION_TOOL.get())) {
 
             // Applying Glowstone
@@ -116,6 +121,7 @@ public class ChiseledLaboratoryBookShelfBlock extends ChiseledBookShelfBlock {
                 }
                 level.setBlock(blockPos, block.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, blockState.getValue(HorizontalDirectionalBlock.FACING)).setValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_0_OCCUPIED, blockState.getValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_0_OCCUPIED)).setValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_1_OCCUPIED, blockState.getValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_1_OCCUPIED)).setValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_2_OCCUPIED, blockState.getValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_2_OCCUPIED)).setValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_3_OCCUPIED, blockState.getValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_3_OCCUPIED)).setValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_4_OCCUPIED, blockState.getValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_4_OCCUPIED)).setValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_5_OCCUPIED, blockState.getValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_5_OCCUPIED)), 3);
                 level.playSound(player, blockPos, SoundEvents.AXE_WAX_OFF, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.playSound(player, blockPos, ModSoundEvents.CONFIGURATION_TOOL_USE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 
                 for (float i = 0; i <= 1; i += 0.2F) {
                     level.addParticle(ModParticles.REMOVING_MODIFIER_PARTICLE.get(), blockPos.getX() + i, blockPos.getY(), blockPos.getZ(), 0, 0, 0);
@@ -134,70 +140,43 @@ public class ChiseledLaboratoryBookShelfBlock extends ChiseledBookShelfBlock {
 
                 return InteractionResult.SUCCESS;
             }
-        }
+        }*/
         return InteractionResult.FAIL;
     }
 
-    private static Optional<Vec2> getRelativeHitCoordinatesForBlockFace(BlockHitResult pHitResult, Direction pFace) {
-        Direction $$2 = pHitResult.getDirection();
-        if (pFace != $$2) {
+    private static Optional<Vec2> getRelativeHitCoordinatesForBlockFace(BlockHitResult blockHitResult, Direction direction) {
+        Direction blockHitResultDirection = blockHitResult.getDirection();
+        if (direction != blockHitResultDirection) {
             return Optional.empty();
         } else {
-            BlockPos $$3 = pHitResult.getBlockPos().relative($$2);
-            Vec3 $$4 = pHitResult.getLocation().subtract((double)$$3.getX(), (double)$$3.getY(), (double)$$3.getZ());
-            double $$5 = $$4.x();
-            double $$6 = $$4.y();
-            double $$7 = $$4.z();
-            Optional var10000;
-            switch ($$2) {
+            BlockPos blockPos = blockHitResult.getBlockPos().relative(blockHitResultDirection);
+            Vec3 vec3 = blockHitResult.getLocation().subtract((double) blockPos.getX(), (double) blockPos.getY(), (double) blockPos.getZ());
+            double x = vec3.x();
+            double y = vec3.y();
+            double z = vec3.z();
+            Optional optional;
+            switch (blockHitResultDirection) {
                 case NORTH:
-                    var10000 = Optional.of(new Vec2((float)(1.0 - $$5), (float)$$6));
+                    optional = Optional.of(new Vec2((float) (1.0 - x), (float) y));
                     break;
                 case SOUTH:
-                    var10000 = Optional.of(new Vec2((float)$$5, (float)$$6));
+                    optional = Optional.of(new Vec2((float) x, (float) y));
                     break;
                 case WEST:
-                    var10000 = Optional.of(new Vec2((float)$$7, (float)$$6));
+                    optional = Optional.of(new Vec2((float) z, (float) y));
                     break;
                 case EAST:
-                    var10000 = Optional.of(new Vec2((float)(1.0 - $$7), (float)$$6));
+                    optional = Optional.of(new Vec2((float) (1.0 - z), (float) y));
                     break;
                 case DOWN:
                 case UP:
-                    var10000 = Optional.empty();
+                    optional = Optional.empty();
                     break;
                 default:
                     throw new IncompatibleClassChangeError();
             }
 
-            return var10000;
-        }
-    }
-
-    private static void addBook(Level pLevel, BlockPos pPos, Player pPlayer, ChiseledLaboratoryBookShelfBlockEntity pBlockEntity, ItemStack pBookStack, int pSlot) {
-        if (!pLevel.isClientSide) {
-            pPlayer.awardStat(Stats.ITEM_USED.get(pBookStack.getItem()));
-            SoundEvent $$6 = pBookStack.is(Items.ENCHANTED_BOOK) ? SoundEvents.CHISELED_BOOKSHELF_INSERT_ENCHANTED : SoundEvents.CHISELED_BOOKSHELF_INSERT;
-            pBlockEntity.setItem(pSlot, pBookStack.split(1));
-            pLevel.playSound((Player)null, pPos, $$6, SoundSource.BLOCKS, 1.0F, 1.0F);
-            if (pPlayer.isCreative()) {
-                pBookStack.grow(1);
-            }
-
-            pLevel.gameEvent(pPlayer, GameEvent.BLOCK_CHANGE, pPos);
-        }
-    }
-
-    private static void removeBook(Level pLevel, BlockPos pPos, Player pPlayer, ChiseledLaboratoryBookShelfBlockEntity pBlockEntity, int pSlot) {
-        if (!pLevel.isClientSide) {
-            ItemStack $$5 = pBlockEntity.removeItem(pSlot, 1);
-            SoundEvent $$6 = $$5.is(Items.ENCHANTED_BOOK) ? SoundEvents.CHISELED_BOOKSHELF_PICKUP_ENCHANTED : SoundEvents.CHISELED_BOOKSHELF_PICKUP;
-            pLevel.playSound((Player)null, pPos, $$6, SoundSource.BLOCKS, 1.0F, 1.0F);
-            if (!pPlayer.getInventory().add($$5)) {
-                pPlayer.drop($$5, false);
-            }
-
-            pLevel.gameEvent(pPlayer, GameEvent.BLOCK_CHANGE, pPos);
+            return optional;
         }
     }
 
@@ -218,7 +197,72 @@ public class ChiseledLaboratoryBookShelfBlock extends ChiseledBookShelfBlock {
         }
     }
 
+    private static void addBook(Level level, BlockPos blockPos, Player player, ChiseledLaboratoryBookShelfBlockEntity blockEntity, ItemStack books, int slot) {
+        if (!level.isClientSide) {
+            player.awardStat(Stats.ITEM_USED.get(books.getItem()));
+            SoundEvent soundEvent = books.is(Items.ENCHANTED_BOOK) ? SoundEvents.CHISELED_BOOKSHELF_INSERT_ENCHANTED : SoundEvents.CHISELED_BOOKSHELF_INSERT;
+            blockEntity.setItem(slot, books.split(1));
+            level.playSound((Player) null, blockPos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
+            if (player.isCreative()) {
+                books.grow(1);
+            }
+
+            level.gameEvent(player, GameEvent.BLOCK_CHANGE, blockPos);
+        }
+    }
+
+    private static void removeBook(Level pLevel, BlockPos pPos, Player pPlayer, ChiseledLaboratoryBookShelfBlockEntity pBlockEntity, int pSlot) {
+        if (!pLevel.isClientSide) {
+            ItemStack $$5 = pBlockEntity.removeItem(pSlot, 1);
+            SoundEvent $$6 = $$5.is(Items.ENCHANTED_BOOK) ? SoundEvents.CHISELED_BOOKSHELF_PICKUP_ENCHANTED : SoundEvents.CHISELED_BOOKSHELF_PICKUP;
+            pLevel.playSound((Player) null, pPos, $$6, SoundSource.BLOCKS, 1.0F, 1.0F);
+            if (!pPlayer.getInventory().add($$5)) {
+                pPlayer.drop($$5, false);
+            }
+
+            pLevel.gameEvent(pPlayer, GameEvent.BLOCK_CHANGE, pPos);
+        }
+    }
+
     public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
         return new ChiseledLaboratoryBookShelfBlockEntity(blockPos, blockState);
+    }
+
+    @Override
+    public void onRemove(BlockState blockState, @NotNull Level level, @NotNull BlockPos blockPos, BlockState newBlockState, boolean movedByPiston) {
+        if (!blockState.is(newBlockState.getBlock())) {
+            BlockEntity blockEntity = level.getBlockEntity(blockPos);
+            if (blockEntity instanceof ChiseledLaboratoryBookShelfBlockEntity) {
+                ChiseledLaboratoryBookShelfBlockEntity bookShelfBlockEntity = (ChiseledLaboratoryBookShelfBlockEntity) blockEntity;
+                if (!bookShelfBlockEntity.isEmpty()) {
+                    for (int i = 0; i < 6; ++i) {
+                        ItemStack books = bookShelfBlockEntity.getItem(i);
+                        if (!books.isEmpty()) {
+                            Containers.dropItemStack(level, (double) blockPos.getX(), (double) blockPos.getY(), (double) blockPos.getZ(), books);
+                        }
+                    }
+
+                    bookShelfBlockEntity.clearContent();
+                    level.updateNeighbourForOutputSignal(blockPos, this);
+                }
+            }
+
+            super.onRemove(blockState, level, blockPos, newBlockState, movedByPiston);
+        }
+    }
+
+    @Override
+    public int getAnalogOutputSignal(@NotNull BlockState blockState, Level level, @NotNull BlockPos blockPos) {
+        if (level.isClientSide()) {
+            return 0;
+        } else {
+            BlockEntity blockEntity = level.getBlockEntity(blockPos);
+            if (blockEntity instanceof ChiseledLaboratoryBookShelfBlockEntity) {
+                ChiseledLaboratoryBookShelfBlockEntity bookShelfBlockEntity = (ChiseledLaboratoryBookShelfBlockEntity) blockEntity;
+                return bookShelfBlockEntity.getLastInteractedSlot() + 1;
+            } else {
+                return 0;
+            }
+        }
     }
 }

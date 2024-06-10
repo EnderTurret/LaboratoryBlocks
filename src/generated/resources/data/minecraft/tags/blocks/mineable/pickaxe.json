@@ -37,6 +37,8 @@
     "laboratoryblocks:gray_laboratory_pillar",
     "laboratoryblocks:enlighted_gray_laboratory_pillar",
     "laboratoryblocks:laboratory_bookshelf",
-    "laboratoryblocks:enlighted_laboratory_bookshelf"
+    "laboratoryblocks:enlighted_laboratory_bookshelf",
+    "laboratoryblocks:chiseled_laboratory_bookshelf",
+    "laboratoryblocks:enlighted_chiseled_laboratory_bookshelf"
   ]
 }

@@ -51,5 +51,14 @@
       "laboratoryblocks:step/step_6",
       "laboratoryblocks:step/step_9"
     ]
+  },
+  "configuration_tool_use":{
+    "sounds":[
+      "laboratoryblocks:tool/tool_1",
+      "laboratoryblocks:tool/tool_2",
+      "laboratoryblocks:tool/tool_3",
+      "laboratoryblocks:tool/tool_4",
+      "laboratoryblocks:tool/tool_5"
+    ]
   }
 }

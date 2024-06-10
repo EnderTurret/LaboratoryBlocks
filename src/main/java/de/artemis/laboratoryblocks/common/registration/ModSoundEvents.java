@@ -19,5 +19,6 @@ public class ModSoundEvents {
     public static final RegistryObject<SoundEvent> LABORATORY_BLOCK_HIT = register("laboratory_block_hit");
     public static final RegistryObject<SoundEvent> LABORATORY_BLOCK_PLACE = register("laboratory_block_place");
     public static final RegistryObject<SoundEvent> LABORATORY_BLOCK_STEP = register("laboratory_block_step");
+    public static final RegistryObject<SoundEvent> CONFIGURATION_TOOL_USE = register("configuration_tool_use");
 
 }

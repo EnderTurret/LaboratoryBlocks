@@ -6,7 +6,7 @@
     "title": "Ready for Work",
     "description": "Obtain a Configuration Tool",
     "background": "laboratoryblocks:textures/misc/advancements_background.png",
-    "frame": "task",
+    "frame": "goal",
     "announce_to_chat": true,
     "hidden": false
   },

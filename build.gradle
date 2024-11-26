@@ -49,6 +49,7 @@ neoForge {
         data {
             data()
             ideName = 'runLaboratoryBlocksData'
+            programArguments.addAll '--mod', "laboratoryblocks", '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
     }
 }

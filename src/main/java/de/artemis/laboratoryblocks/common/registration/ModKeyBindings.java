@@ -3,8 +3,8 @@ package de.artemis.laboratoryblocks.common.registration;
 import com.mojang.blaze3d.platform.InputConstants;
 import de.artemis.laboratoryblocks.LaboratoryBlocks;
 import net.minecraft.client.KeyMapping;
-import net.minecraftforge.client.settings.KeyConflictContext;
-import net.minecraftforge.client.settings.KeyModifier;
+import net.neoforged.neoforge.client.settings.KeyConflictContext;
+import net.neoforged.neoforge.client.settings.KeyModifier;
 import org.lwjgl.glfw.GLFW;
 
 public class ModKeyBindings {

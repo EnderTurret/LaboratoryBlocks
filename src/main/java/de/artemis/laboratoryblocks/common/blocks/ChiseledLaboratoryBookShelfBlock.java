@@ -1,41 +1,26 @@
 package de.artemis.laboratoryblocks.common.blocks;
 
 import de.artemis.laboratoryblocks.common.blockentities.ChiseledLaboratoryBookShelfBlockEntity;
-import de.artemis.laboratoryblocks.common.registration.ModItems;
-import de.artemis.laboratoryblocks.common.registration.ModKeyBindings;
-import de.artemis.laboratoryblocks.common.registration.ModParticles;
-import de.artemis.laboratoryblocks.common.util.KeyBindingUtil;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.ChiseledBookShelfBlock;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.ChiseledBookShelfBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Optional;
 import java.util.function.Supplier;
 
 public class ChiseledLaboratoryBookShelfBlock extends ChiseledBookShelfBlock {
@@ -47,34 +32,14 @@ public class ChiseledLaboratoryBookShelfBlock extends ChiseledBookShelfBlock {
         this.block = block;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
-    public @NotNull InteractionResult use(@NotNull BlockState blockState, @NotNull Level level, @NotNull BlockPos blockPos, @NotNull Player player, @NotNull InteractionHand interactionHand, @NotNull BlockHitResult blockHitResult) {
+    protected @NotNull ItemInteractionResult useItemOn(ItemStack itemStackInHand, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
 
         //Vanilla Begin
 
-        BlockEntity blockEntity = level.getBlockEntity(blockPos);
-        if (blockEntity instanceof ChiseledLaboratoryBookShelfBlockEntity bookShelfBlockEntity) {
-
-            Optional optional = getRelativeHitCoordinatesForBlockFace(blockHitResult, (Direction) blockState.getValue(HorizontalDirectionalBlock.FACING));
-            if (optional.isEmpty()) {
-                return InteractionResult.PASS;
-            } else {
-                int hitSlot = getHitSlot((Vec2) optional.get());
-                if ((Boolean) blockState.getValue((Property) SLOT_OCCUPIED_PROPERTIES.get(hitSlot))) {
-                    removeBook(level, blockPos, player, bookShelfBlockEntity, hitSlot);
-                    return InteractionResult.sidedSuccess(level.isClientSide);
-                } else {
-                    ItemStack itemInHand = player.getItemInHand(interactionHand);
-                    if (itemInHand.is(ItemTags.BOOKSHELF_BOOKS)) {
-                        addBook(level, blockPos, player, bookShelfBlockEntity, itemInHand, hitSlot);
-                        return InteractionResult.sidedSuccess(level.isClientSide);
-                    } else {
-                        return InteractionResult.CONSUME;
-                    }
-                }
-            }
-        }
+        ItemInteractionResult result = super.useItemOn(itemStackInHand, blockState, level, blockPos, player, hand, hitResult);
+        if (result != ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION)
+        	return result;
 
         //Vanilla End
 
@@ -141,60 +106,7 @@ public class ChiseledLaboratoryBookShelfBlock extends ChiseledBookShelfBlock {
                 return InteractionResult.SUCCESS;
             }
         }*/
-        return InteractionResult.FAIL;
-    }
-
-    private static Optional<Vec2> getRelativeHitCoordinatesForBlockFace(BlockHitResult blockHitResult, Direction direction) {
-        Direction blockHitResultDirection = blockHitResult.getDirection();
-        if (direction != blockHitResultDirection) {
-            return Optional.empty();
-        } else {
-            BlockPos blockPos = blockHitResult.getBlockPos().relative(blockHitResultDirection);
-            Vec3 vec3 = blockHitResult.getLocation().subtract((double) blockPos.getX(), (double) blockPos.getY(), (double) blockPos.getZ());
-            double x = vec3.x();
-            double y = vec3.y();
-            double z = vec3.z();
-            Optional optional;
-            switch (blockHitResultDirection) {
-                case NORTH:
-                    optional = Optional.of(new Vec2((float) (1.0 - x), (float) y));
-                    break;
-                case SOUTH:
-                    optional = Optional.of(new Vec2((float) x, (float) y));
-                    break;
-                case WEST:
-                    optional = Optional.of(new Vec2((float) z, (float) y));
-                    break;
-                case EAST:
-                    optional = Optional.of(new Vec2((float) (1.0 - z), (float) y));
-                    break;
-                case DOWN:
-                case UP:
-                    optional = Optional.empty();
-                    break;
-                default:
-                    throw new IncompatibleClassChangeError();
-            }
-
-            return optional;
-        }
-    }
-
-    private static int getHitSlot(Vec2 pHitPos) {
-        int $$1 = pHitPos.y >= 0.5F ? 0 : 1;
-        int $$2 = getSection(pHitPos.x);
-        return $$2 + $$1 * 3;
-    }
-
-    private static int getSection(float pX) {
-        float $$1 = 0.0625F;
-        float $$2 = 0.375F;
-        if (pX < 0.375F) {
-            return 0;
-        } else {
-            float $$3 = 0.6875F;
-            return pX < 0.6875F ? 1 : 2;
-        }
+        return result;
     }
 
     private static void addBook(Level level, BlockPos blockPos, Player player, ChiseledLaboratoryBookShelfBlockEntity blockEntity, ItemStack books, int slot) {

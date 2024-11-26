@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.ChiseledBookShelfBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class ChiseledLaboratoryBookShelfBlockEntity extends ChiseledBookShelfBlockEntity implements Container {
+public class ChiseledLaboratoryBookShelfBlockEntity extends ChiseledBookShelfBlockEntity {
 
     public ChiseledLaboratoryBookShelfBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(blockPos, blockState);

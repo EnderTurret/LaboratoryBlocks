@@ -39,6 +39,12 @@ public class ChiseledLaboratoryBookShelfBlock extends ChiseledBookShelfBlock imp
     }
 
     @Override
+    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+        if (newState.getBlock() instanceof ChiseledLaboratoryBookShelfBlock) return;
+        super.onRemove(state, level, pos, newState, movedByPiston);
+    }
+
+    @Override
     protected @NotNull ItemInteractionResult useItemOn(ItemStack itemStackInHand, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
 
         //Vanilla Begin
@@ -49,9 +55,8 @@ public class ChiseledLaboratoryBookShelfBlock extends ChiseledBookShelfBlock imp
 
         //Vanilla End
 
-        /*
         result = tryApplyGlowstone(itemStackInHand, blockState, level, blockPos, player, hand, block);
-        */
+
         return result;
     }
 

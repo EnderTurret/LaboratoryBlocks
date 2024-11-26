@@ -12,9 +12,9 @@ public class ChiseledLaboratoryBookShelfBlockEntity extends ChiseledBookShelfBlo
     public ChiseledLaboratoryBookShelfBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(blockPos, blockState);
     }
-   
+
     @Override
     public BlockEntityType<?> getType() {
-    	return ModBlockEntities.CHISELED_LABORATORY_BOOKSHELF_BLOCK_ENTITY.get();
+        return ModBlockEntities.CHISELED_LABORATORY_BOOKSHELF_BLOCK_ENTITY.get();
     }
 }

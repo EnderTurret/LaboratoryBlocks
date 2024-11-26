@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 public class ModBlocks {
 
     private static <T extends Block> Supplier<T> register(String name, Supplier<T> block) {
-    	Supplier<T> toReturn = Registration.BLOCKS.register(name, block);
+        Supplier<T> toReturn = Registration.BLOCKS.register(name, block);
         Registration.ITEMS.register(name, () -> new BlockItem(toReturn.get(),
                 new Item.Properties()));
 

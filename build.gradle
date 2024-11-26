@@ -29,7 +29,7 @@ version = "${mc_version}-${mod_version}-fusion"
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 wrapper {
-    gradleVersion = '7.5.1'
+    gradleVersion = '8.10'
     distributionType = Wrapper.DistributionType.ALL
 }
 

@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:laboratory_glass"
+      "id": "laboratoryblocks:laboratory_glass"
     },
     "title": "Glassworking",
     "description": "Place your first block of Laboratory Glass",

@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:enlighted_laboratory_glass"
+      "id": "laboratoryblocks:enlighted_laboratory_glass"
     },
     "title": "It glows?",
     "description": "Place your first enlighted block of Laboratory Glass",

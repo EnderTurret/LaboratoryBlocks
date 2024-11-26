@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:pla_flooring"
+      "id": "laboratoryblocks:pla_flooring"
     },
     "title": "PLA Master",
     "description": "Place your first PLA Flooring",

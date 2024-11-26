@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:pla_block"
+      "id": "laboratoryblocks:pla_block"
     },
     "title": "PLA Enthusiast",
     "description": "Place your first PLA Block",

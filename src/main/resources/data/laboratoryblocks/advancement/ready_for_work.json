@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:configuration_tool"
+      "id": "laboratoryblocks:configuration_tool"
     },
     "title": "Ready for Work",
     "description": "Obtain a Configuration Tool",

@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:right-faced_green_signaling_laboratory_block"
+      "id": "laboratoryblocks:right-faced_green_signaling_laboratory_block"
     },
     "title": "This is the way",
     "description": "Place your first Right Facing Green Signaling Laboratory block",

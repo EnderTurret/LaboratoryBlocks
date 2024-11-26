@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:laboratory_block"
+      "id": "laboratoryblocks:laboratory_block"
     },
     "title": "Welcome to the Lab",
     "description": "Obtain your first Laboratory Block",

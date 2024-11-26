@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:laboratory_fan_redstone_controlled"
+      "id": "laboratoryblocks:laboratory_fan_redstone_controlled"
     },
     "title": "You Spin Me Round (In controlled manner)",
     "description": "Place your first Laboratory Fan that is controlled by Redstone",

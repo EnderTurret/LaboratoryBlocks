@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:iron_screw"
+      "id": "laboratoryblocks:iron_screw"
     },
     "title": "Ironworks",
     "description": "Obtain your first iron screw",

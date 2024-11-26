@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:laboratory_tiles"
+      "id": "laboratoryblocks:laboratory_tiles"
     },
     "title": "Show me the real tile",
     "description": "Place your first Laboratory Tile",

@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:chiseled_laboratory_bookshelf"
+      "id": "laboratoryblocks:chiseled_laboratory_bookshelf"
     },
     "title": "Librarian, but Fancy",
     "description": "Place your first Chiseled Laboratory Bookshelf",

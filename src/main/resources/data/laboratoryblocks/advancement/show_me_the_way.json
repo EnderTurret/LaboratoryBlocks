@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:right-faced_red_signaling_laboratory_block"
+      "id": "laboratoryblocks:right-faced_red_signaling_laboratory_block"
     },
     "title": "Show me the way",
     "description": "Place your first Right Facing Red Signaling Laboratory block",

@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:laboratory_fan"
+      "id": "laboratoryblocks:laboratory_fan"
     },
     "title": "You Spin Me Round",
     "description": "Place your first Laboratory Fan and make it spin",

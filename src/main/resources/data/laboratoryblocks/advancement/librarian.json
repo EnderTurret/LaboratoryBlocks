@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:laboratory_bookshelf"
+      "id": "laboratoryblocks:laboratory_bookshelf"
     },
     "title": "Librarian",
     "description": "Place your first Laboratory Bookshelf",

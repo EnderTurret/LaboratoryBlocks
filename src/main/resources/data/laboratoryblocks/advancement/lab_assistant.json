@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:pla_sheets"
+      "id": "laboratoryblocks:pla_sheets"
     },
     "title": "Lab Assistant",
     "description": "Craft a PLA Sheet",

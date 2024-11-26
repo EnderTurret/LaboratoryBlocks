@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:right-faced_blue_signaling_laboratory_block"
+      "id": "laboratoryblocks:right-faced_blue_signaling_laboratory_block"
     },
     "title": "I have spoken",
     "description": "Place your first Right Facing Blue Signaling Laboratory block",

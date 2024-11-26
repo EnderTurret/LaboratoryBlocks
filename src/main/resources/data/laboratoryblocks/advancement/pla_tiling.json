@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "laboratoryblocks:pla_tiles"
+      "id": "laboratoryblocks:pla_tiles"
     },
     "title": "PLA Tiling",
     "description": "Place your first PLA Tile",

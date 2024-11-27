@@ -1,6 +1,6 @@
 package de.artemis.laboratoryblocks.common.items;
 
-import de.artemis.laboratoryblocks.common.registration.ModKeyBindings;
+import de.artemis.laboratoryblocks.client.registration.ModKeyBindings;
 import de.artemis.laboratoryblocks.common.util.KeyBindingUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

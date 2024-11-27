@@ -1,7 +1,7 @@
 package de.artemis.laboratoryblocks.client.event;
 
 import de.artemis.laboratoryblocks.LaboratoryBlocks;
-import de.artemis.laboratoryblocks.common.registration.ModKeyBindings;
+import de.artemis.laboratoryblocks.client.registration.ModKeyBindings;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;

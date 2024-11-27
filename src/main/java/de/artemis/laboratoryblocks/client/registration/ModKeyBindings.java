@@ -1,4 +1,4 @@
-package de.artemis.laboratoryblocks.common.registration;
+package de.artemis.laboratoryblocks.client.registration;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import de.artemis.laboratoryblocks.LaboratoryBlocks;

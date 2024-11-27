@@ -1,7 +1,7 @@
 package de.artemis.laboratoryblocks.common.blocks;
 
+import de.artemis.laboratoryblocks.client.registration.ModKeyBindings;
 import de.artemis.laboratoryblocks.common.registration.ModItems;
-import de.artemis.laboratoryblocks.common.registration.ModKeyBindings;
 import de.artemis.laboratoryblocks.common.registration.ModParticles;
 import de.artemis.laboratoryblocks.common.registration.ModSoundEvents;
 import de.artemis.laboratoryblocks.common.util.KeyBindingUtil;

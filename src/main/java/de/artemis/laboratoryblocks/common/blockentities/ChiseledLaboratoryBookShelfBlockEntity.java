@@ -2,7 +2,6 @@ package de.artemis.laboratoryblocks.common.blockentities;
 
 import de.artemis.laboratoryblocks.common.registration.ModBlockEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.Container;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.ChiseledBookShelfBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;

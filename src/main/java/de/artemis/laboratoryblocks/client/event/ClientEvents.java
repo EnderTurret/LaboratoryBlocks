@@ -12,8 +12,6 @@ public class ClientEvents {
 
     @SubscribeEvent
     public static void onRegisterKeyMappingEvent(RegisterKeyMappingsEvent event) {
-        event.register(ModKeyBindings.REMOVE_REDSTONE_CONFIGURATION_TOOL_ACTION);
-        event.register(ModKeyBindings.REMOVE_GLOWSTONE_CONFIGURATION_TOOL_ACTION);
-        event.register(ModKeyBindings.SHOW_INFORMATION);
+        //event.register(ModKeyBindings.SHOW_INFORMATION);
     }
 }

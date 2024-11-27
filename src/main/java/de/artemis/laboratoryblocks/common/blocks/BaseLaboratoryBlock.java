@@ -2,11 +2,10 @@ package de.artemis.laboratoryblocks.common.blocks;
 
 import java.util.function.Supplier;
 
-import de.artemis.laboratoryblocks.client.registration.ModKeyBindings;
+import de.artemis.laboratoryblocks.common.items.ConfigurationToolItem;
 import de.artemis.laboratoryblocks.common.registration.ModItems;
 import de.artemis.laboratoryblocks.common.registration.ModParticles;
 import de.artemis.laboratoryblocks.common.registration.ModSoundEvents;
-import de.artemis.laboratoryblocks.common.util.KeyBindingUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.sounds.SoundEvents;
@@ -60,7 +59,7 @@ public interface BaseLaboratoryBlock {
         }
 
         // Removing Glowstone
-        if (itemStackInHand.is(ModItems.CONFIGURATION_TOOL.get()) && blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("enlighted") && KeyBindingUtil.isKeyPressed(ModKeyBindings.REMOVE_GLOWSTONE_CONFIGURATION_TOOL_ACTION)) {
+        if (itemStackInHand.getItem() instanceof ConfigurationToolItem tool && tool.getState(itemStackInHand) == ConfigurationToolItem.State.REMOVE_GLOWSTONE && blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("enlighted")) {
             if (!player.isCreative()) {
                 if (!player.getInventory().add(new ItemStack(ModItems.GLOWSTONE_PARTICLES.get()))) {
                     ItemEntity itemEntity = new ItemEntity(level, blockPos.getX() + 0.5F, blockPos.getY() + 1.0F, blockPos.getZ() + 0.5F, new ItemStack(ModItems.GLOWSTONE_PARTICLES.get()));

@@ -1,10 +1,9 @@
 package de.artemis.laboratoryblocks.common.blocks;
 
-import de.artemis.laboratoryblocks.client.registration.ModKeyBindings;
+import de.artemis.laboratoryblocks.common.items.ConfigurationToolItem;
 import de.artemis.laboratoryblocks.common.registration.ModItems;
 import de.artemis.laboratoryblocks.common.registration.ModParticles;
 import de.artemis.laboratoryblocks.common.registration.ModSoundEvents;
-import de.artemis.laboratoryblocks.common.util.KeyBindingUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -71,7 +70,7 @@ public class RedstoneControlledLaboratoryBlock extends Block implements BaseLabo
             shouldBePowered = !shouldBePowered;
         }
 
-        if (blockState.getValue(POWERED) && !shouldBePowered) {
+        if (blockState.getValue(POWERED) != shouldBePowered) {
             serverLevel.setBlock(blockPos, blockState.cycle(POWERED), 2);
         }
     }
@@ -79,10 +78,10 @@ public class RedstoneControlledLaboratoryBlock extends Block implements BaseLabo
     @SuppressWarnings("deprecation")
     @Override
     protected @NotNull ItemInteractionResult useItemOn(ItemStack itemStackInHand, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (itemStackInHand.is(ModItems.GLOWSTONE_PARTICLES.get()) || itemStackInHand.is(ModItems.CONFIGURATION_TOOL.get()) || itemStackInHand.is(ModItems.REDSTONE_PARTICLES.get())) {
+        {
 
             // Reversing Redstone Control
-            if (itemStackInHand.is(ModItems.CONFIGURATION_TOOL.get()) && blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("redstone")) {
+            if (itemStackInHand.getItem() instanceof ConfigurationToolItem tool && tool.getState(itemStackInHand) == ConfigurationToolItem.State.REVERSE_REDSTONE_CONTROL && blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("redstone")) {
                 level.setBlock(blockPos, blockState.cycle(INVERTED), 2);
                 level.scheduleTick(blockPos, this, 4);
                 level.blockUpdated(blockPos, blockState.getBlock());
@@ -112,7 +111,7 @@ public class RedstoneControlledLaboratoryBlock extends Block implements BaseLabo
             }
 
             // Removing Redstone
-            if (itemStackInHand.is(ModItems.CONFIGURATION_TOOL.get()) && blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("redstone") && KeyBindingUtil.isKeyPressed(ModKeyBindings.REMOVE_REDSTONE_CONFIGURATION_TOOL_ACTION)) {
+            if (itemStackInHand.getItem() instanceof ConfigurationToolItem tool && tool.getState(itemStackInHand) == ConfigurationToolItem.State.REMOVE_REDSTONE && blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("redstone")) {
                 if (!player.isCreative()) {
                     if (!player.getInventory().add(new ItemStack(ModItems.REDSTONE_PARTICLES.get()))) {
                         ItemEntity itemEntity = new ItemEntity(level, blockPos.getX() + 0.5F, blockPos.getY() + 1.0F, blockPos.getZ() + 0.5F, new ItemStack(ModItems.REDSTONE_PARTICLES.get()));

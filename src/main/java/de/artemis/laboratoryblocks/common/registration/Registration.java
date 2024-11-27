@@ -1,6 +1,7 @@
 package de.artemis.laboratoryblocks.common.registration;
 
 import de.artemis.laboratoryblocks.LaboratoryBlocks;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
@@ -18,6 +19,7 @@ public class Registration {
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, LaboratoryBlocks.MOD_ID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(BuiltInRegistries.CREATIVE_MODE_TAB, LaboratoryBlocks.MOD_ID);
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, LaboratoryBlocks.MOD_ID);
+    public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENTS = DeferredRegister.create(BuiltInRegistries.DATA_COMPONENT_TYPE, LaboratoryBlocks.MOD_ID);
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
@@ -26,6 +28,7 @@ public class Registration {
         PARTICLE_TYPES.register(eventBus);
         CREATIVE_MODE_TABS.register(eventBus);
         BLOCK_ENTITIES.register(eventBus);
+        DATA_COMPONENTS.register(eventBus);
 
         ModBlocks.register();
         ModItems.register();
@@ -33,5 +36,6 @@ public class Registration {
         ModParticles.register();
         ModCreativeModeTabs.register();
         ModBlockEntities.register();
+        ModDataComponents.register();
     }
 }

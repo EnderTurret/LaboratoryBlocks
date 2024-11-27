@@ -13,11 +13,9 @@ public class InventoryTab {
         builder.displayItems((set, out) -> {
 
             out.acceptAll(Registration.ITEMS.getEntries().stream().map(DeferredHolder::value).map(Item::getDefaultInstance).toList());
-            //out.acceptAll(Registration.BLOCKS.getEntries().stream().map(DeferredHolder::value).map(Block::asItem).map(Item::getDefaultInstance).toList());
 
         });
         builder.icon(() -> ModBlocks.LABORATORY_BLOCK.get().asItem().getDefaultInstance());
-        builder.withSearchBar();
         builder.title(Component.translatable("itemGroup.laboratoryblocks"));
     }
 }

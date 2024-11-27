@@ -2,7 +2,6 @@ package de.artemis.laboratoryblocks.common.blocks;
 
 import de.artemis.laboratoryblocks.common.items.ConfigurationToolItem;
 import de.artemis.laboratoryblocks.common.registration.ModItems;
-import de.artemis.laboratoryblocks.common.registration.ModParticles;
 import de.artemis.laboratoryblocks.common.registration.ModSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;

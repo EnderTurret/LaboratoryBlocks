@@ -13,16 +13,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
-public class LaboratoryGlassBlock extends TransparentBlock implements BaseLaboratoryBlock {
-    private final Supplier<LaboratoryGlassBlock> block;
+public class LaboratoryGlassBlock extends TransparentBlock {
 
-    public LaboratoryGlassBlock(Supplier<LaboratoryGlassBlock> block, Properties properties) {
+    public LaboratoryGlassBlock(Properties properties) {
         super(properties);
-        this.block = block;
-    }
-
-    @Override
-    protected @NotNull ItemInteractionResult useItemOn(ItemStack itemStackInHand, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        return tryApplyGlowstone(itemStackInHand, blockState, level, blockPos, player, hand, block);
     }
 }

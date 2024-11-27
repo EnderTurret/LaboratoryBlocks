@@ -14,15 +14,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Supplier;
 
 public class LaboratoryBlock extends Block implements BaseLaboratoryBlock {
-    private final Supplier<LaboratoryBlock> block;
 
-    public LaboratoryBlock(Supplier<LaboratoryBlock> block, Properties properties) {
+    public LaboratoryBlock(Properties properties) {
         super(properties);
-        this.block = block;
-    }
-
-    @Override
-    protected @NotNull ItemInteractionResult useItemOn(ItemStack itemStackInHand, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        return tryApplyGlowstone(itemStackInHand, blockState, level, blockPos, player, hand, block);
     }
 }

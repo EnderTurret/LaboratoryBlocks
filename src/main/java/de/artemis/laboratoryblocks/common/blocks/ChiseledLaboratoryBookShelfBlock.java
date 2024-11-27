@@ -18,46 +18,16 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
-public class ChiseledLaboratoryBookShelfBlock extends ChiseledBookShelfBlock implements BaseLaboratoryBlock {
+public class ChiseledLaboratoryBookShelfBlock extends ChiseledBookShelfBlock {
 
-    private final Supplier<ChiseledLaboratoryBookShelfBlock> block;
-
-    public ChiseledLaboratoryBookShelfBlock(Supplier<ChiseledLaboratoryBookShelfBlock> block, Properties properties) {
+    public ChiseledLaboratoryBookShelfBlock(Properties properties) {
         super(properties);
-        this.block = block;
-    }
-
-    @Override
-    public BlockState copyState(BlockState oldState, BlockState newState) {
-        return newState.setValue(HorizontalDirectionalBlock.FACING, oldState.getValue(HorizontalDirectionalBlock.FACING))
-                .setValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_0_OCCUPIED, oldState.getValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_0_OCCUPIED))
-                .setValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_1_OCCUPIED, oldState.getValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_1_OCCUPIED))
-                .setValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_2_OCCUPIED, oldState.getValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_2_OCCUPIED))
-                .setValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_3_OCCUPIED, oldState.getValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_3_OCCUPIED))
-                .setValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_4_OCCUPIED, oldState.getValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_4_OCCUPIED))
-                .setValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_5_OCCUPIED, oldState.getValue(BlockStateProperties.CHISELED_BOOKSHELF_SLOT_5_OCCUPIED));
     }
 
     @Override
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (newState.getBlock() instanceof ChiseledLaboratoryBookShelfBlock) return;
         super.onRemove(state, level, pos, newState, movedByPiston);
-    }
-
-    @Override
-    protected @NotNull ItemInteractionResult useItemOn(ItemStack itemStackInHand, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-
-        //Vanilla Begin
-
-        ItemInteractionResult result = super.useItemOn(itemStackInHand, blockState, level, blockPos, player, hand, hitResult);
-        if (result != ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION)
-            return result;
-
-        //Vanilla End
-
-        result = tryApplyGlowstone(itemStackInHand, blockState, level, blockPos, player, hand, block);
-
-        return result;
     }
 
     @Override

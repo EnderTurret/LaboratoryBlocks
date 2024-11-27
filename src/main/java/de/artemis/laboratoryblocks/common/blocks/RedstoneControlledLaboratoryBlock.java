@@ -1,17 +1,13 @@
 package de.artemis.laboratoryblocks.common.blocks;
 
 import de.artemis.laboratoryblocks.common.items.ConfigurationToolItem;
-import de.artemis.laboratoryblocks.common.registration.ModItems;
 import de.artemis.laboratoryblocks.common.registration.ModSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -21,8 +17,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.function.Supplier;
 
 public class RedstoneControlledLaboratoryBlock extends Block {
 
@@ -75,7 +69,7 @@ public class RedstoneControlledLaboratoryBlock extends Block {
     @Override
     protected @NotNull ItemInteractionResult useItemOn(ItemStack itemStackInHand, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         // Reversing Redstone Control
-        if (itemStackInHand.getItem() instanceof ConfigurationToolItem tool && tool.getState(itemStackInHand) == ConfigurationToolItem.State.REVERSE_REDSTONE_CONTROL && blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("redstone")) {
+        if (itemStackInHand.getItem() instanceof ConfigurationToolItem tool && blockState.getBlock().builtInRegistryHolder().unwrapKey().get().toString().contains("redstone")) {
             level.setBlock(blockPos, blockState.cycle(INVERTED), 2);
             level.scheduleTick(blockPos, this, 4);
             level.blockUpdated(blockPos, blockState.getBlock());

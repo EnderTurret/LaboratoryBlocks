@@ -4,7 +4,6 @@ import java.util.function.Supplier;
 
 import com.supermartijn642.fusion.api.model.DefaultModelTypes;
 import com.supermartijn642.fusion.api.model.ModelInstance;
-import com.supermartijn642.fusion.api.model.data.ConnectingModelData;
 import com.supermartijn642.fusion.api.model.data.ConnectingModelDataBuilder;
 import com.supermartijn642.fusion.api.predicate.DefaultConnectionPredicates;
 import de.artemis.laboratoryblocks.LaboratoryBlocks;

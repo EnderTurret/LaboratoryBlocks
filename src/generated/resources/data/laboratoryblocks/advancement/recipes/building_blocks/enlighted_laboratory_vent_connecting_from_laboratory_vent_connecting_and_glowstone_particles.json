@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:enlighted_laboratory_vent_connecting_from_laboratory_vent_connecting_and_glowstone_particles"
+        "recipe": "laboratoryblocks:enlighted_laboratory_vent_connecting_from_laboratory_vent_connecting_and_glowstone_particles"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -37,7 +37,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:enlighted_laboratory_vent_connecting_from_laboratory_vent_connecting_and_glowstone_particles"
+      "laboratoryblocks:enlighted_laboratory_vent_connecting_from_laboratory_vent_connecting_and_glowstone_particles"
     ]
   }
 }

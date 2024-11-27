@@ -3,7 +3,7 @@
   "category": "building",
   "ingredients": [
     {
-      "item": "laboratoryblocks:enlighted_laboratory_vent_connecting"
+      "item": "laboratoryblocks:enlighted_laboratory_vent"
     }
   ],
   "result": {

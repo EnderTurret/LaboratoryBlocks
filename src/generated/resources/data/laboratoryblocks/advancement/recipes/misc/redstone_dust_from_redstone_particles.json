@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_glowstone_particles": {
+    "has_redstone_particles": {
       "conditions": {
         "items": [
           {
-            "items": "laboratoryblocks:glowstone_particles"
+            "items": "laboratoryblocks:redstone_particles"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:glowstone_dust"
+        "recipe": "laboratoryblocks:redstone_dust_from_redstone_particles"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_glowstone_particles"
+      "has_redstone_particles"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:glowstone_dust"
+      "laboratoryblocks:redstone_dust_from_redstone_particles"
     ]
   }
 }

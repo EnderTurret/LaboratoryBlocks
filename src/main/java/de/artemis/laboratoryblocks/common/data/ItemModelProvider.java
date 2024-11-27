@@ -21,8 +21,6 @@ public class ItemModelProvider extends net.neoforged.neoforge.client.model.gener
         simpleItem(ModItems.COMPRESSED_STARCH.get());
         simpleItem(ModItems.PLA_SHEETS.get());
         simpleItem(ModItems.IRON_SCREW.get());
-        simpleItem(ModItems.GLOWSTONE_PARTICLES.get());
-        simpleItem(ModItems.REDSTONE_PARTICLES.get());
         simpleItem(ModItems.CONFIGURATION_TOOL.get());
 
         simpleBlock(ModBlocks.PLA_BLOCK.get());

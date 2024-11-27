@@ -25,8 +25,6 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
         add(ModItems.COMPRESSED_STARCH.get(), "Compressed Starch");
         add(ModItems.PLA_SHEETS.get(), "PLA Sheets");
         add(ModItems.IRON_SCREW.get(), "Iron Screw");
-        add(ModItems.GLOWSTONE_PARTICLES.get(), "Glowstone Particles");
-        add(ModItems.REDSTONE_PARTICLES.get(), "Redstone Particles");
         add(ModItems.CONFIGURATION_TOOL.get(), "Configuration Tool");
 
         add(ModBlocks.PLA_BLOCK.get(), "PLA Block");

@@ -15,7 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": "laboratoryblocks:redstone_particles"
+            "items": "minecraft:redstone"
           }
         ]
       },

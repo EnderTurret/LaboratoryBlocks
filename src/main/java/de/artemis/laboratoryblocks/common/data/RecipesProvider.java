@@ -28,10 +28,6 @@ public class RecipesProvider extends RecipeProvider implements IConditionBuilder
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COMPRESSED_STARCH.get(), 1).define('A', ModItems.STARCH.get()).pattern("AA").pattern("AA").unlockedBy("has_starch", has(ModItems.STARCH.get())).save(consumer);
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.COMPRESSED_STARCH.get()), RecipeCategory.MISC, ModItems.PLA_SHEETS.get().asItem(), 0.35F, 200).unlockedBy("has_compressed_starch", has(ModItems.COMPRESSED_STARCH.get())).save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.IRON_SCREW.get(), 16).define('A', Items.IRON_NUGGET).define('B', Items.IRON_INGOT).pattern("ABA").pattern(" A ").unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET)).unlockedBy("has_iron_ingot", has(Items.IRON_INGOT)).save(consumer);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GLOWSTONE_PARTICLES.get(), 8).requires(Items.GLOWSTONE_DUST).unlockedBy("has_glowstone_dust", has(Items.GLOWSTONE_DUST)).save(consumer);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.GLOWSTONE_DUST, 1).requires(ModItems.GLOWSTONE_PARTICLES.get(), 8).unlockedBy("has_glowstone_particles", has(ModItems.GLOWSTONE_PARTICLES.get())).save(consumer, "laboratoryblocks:glowstone_dust_from_glowstone_particles");
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.REDSTONE_PARTICLES.get(), 8).requires(Items.REDSTONE).unlockedBy("has_redstone", has(Items.REDSTONE)).save(consumer);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.REDSTONE, 1).requires(ModItems.REDSTONE_PARTICLES.get(), 8).unlockedBy("has_redstone_particles", has(ModItems.REDSTONE_PARTICLES.get())).save(consumer, "laboratoryblocks:redstone_dust_from_redstone_particles");
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CLEAR_LABORATORY_SCREEN.get(), 4).define('A', ModBlocks.LABORATORY_BLOCK.get()).define('B', ModItems.IRON_SCREW.get()).define('C', ModItems.PLA_SHEETS.get()).pattern("BAB").pattern("ACA").pattern("BAB").unlockedBy("has_laboratory_block", has(ModBlocks.LABORATORY_BLOCK.get())).unlockedBy("has_iron_screw", has(ModItems.IRON_SCREW.get())).unlockedBy("has_pla_sheets", has(ModItems.PLA_SHEETS.get())).save(consumer);
 
@@ -71,7 +67,7 @@ public class RecipesProvider extends RecipeProvider implements IConditionBuilder
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_LABORATORY_BOOKSHELF.get(), 1).define('A', ModBlocks.LABORATORY_BLOCK.get()).pattern("AAA").pattern("   ").pattern("AAA").unlockedBy("has_laboratory_block", has(ModBlocks.LABORATORY_BLOCK.get())).save(consumer);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LABORATORY_FAN_REDSTONE_CONTROLLED.get(), 1).requires(ModBlocks.LABORATORY_FAN.get()).requires(ModItems.REDSTONE_PARTICLES.get()).unlockedBy("has_laboratory_fan", has(ModBlocks.LABORATORY_FAN.get())).unlockedBy("has_redstone_particles", has(ModItems.REDSTONE_PARTICLES.get())).save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LABORATORY_FAN_REDSTONE_CONTROLLED.get(), 1).requires(ModBlocks.LABORATORY_FAN.get()).requires(Items.REDSTONE).unlockedBy("has_laboratory_fan", has(ModBlocks.LABORATORY_FAN.get())).unlockedBy("has_redstone_particles", has(Items.REDSTONE)).save(consumer);
 
     }
 }

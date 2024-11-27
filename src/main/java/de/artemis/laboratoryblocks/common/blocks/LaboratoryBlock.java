@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
-public class LaboratoryBlock extends Block implements BaseLaboratoryBlock {
+public class LaboratoryBlock extends Block {
 
     public LaboratoryBlock(Properties properties) {
         super(properties);

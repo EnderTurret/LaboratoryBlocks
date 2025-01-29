@@ -29,9 +29,20 @@ public class FusionModelProvider extends com.supermartijn642.fusion.api.provider
         addModel(id.withPath(p -> "block/" + p), ModelInstance.of(DefaultModelTypes.CONNECTING, modelData));
     }
 
+    private void sameBlockAnd(Supplier<? extends Block> block, Supplier<? extends Block> block2) {
+        final Block b = block.get();
+        final ResourceLocation id = BuiltInRegistries.BLOCK.getKey(b);
+        var modelData = ConnectingModelDataBuilder.builder()
+                .parent(ResourceLocation.fromNamespaceAndPath("minecraft", "block/cube_all"))
+                .texture("all", ResourceLocation.fromNamespaceAndPath(LaboratoryBlocks.MOD_ID, "block/" + id.getPath() + "-fusion"))
+                .connection(DefaultConnectionPredicates.or(DefaultConnectionPredicates.isSameBlock(), DefaultConnectionPredicates.matchBlock(block2.get())))
+                .build();
+        addModel(id.withPath(p -> "block/" + p), ModelInstance.of(DefaultModelTypes.CONNECTING, modelData));
+    }
+
     @Override
     protected void generate() {
-        sameBlock(ModBlocks.LABORATORY_BLOCK);
+        sameBlockAnd(ModBlocks.LABORATORY_BLOCK, ModBlocks.SCREWED_LABORATORY_BLOCK);
         sameBlock(ModBlocks.LABORATORY_VENT);
         sameBlock(ModBlocks.CLEAR_LABORATORY_SCREEN);
         sameBlock(ModBlocks.LEFT_FACED_BLUE_SIGNALING_LABORATORY_BLOCK);
@@ -40,7 +51,7 @@ public class FusionModelProvider extends com.supermartijn642.fusion.api.provider
         sameBlock(ModBlocks.RIGHT_FACED_BLUE_SIGNALING_LABORATORY_BLOCK);
         sameBlock(ModBlocks.RIGHT_FACED_GREEN_SIGNALING_LABORATORY_BLOCK);
         sameBlock(ModBlocks.RIGHT_FACED_RED_SIGNALING_LABORATORY_BLOCK);
-        sameBlock(ModBlocks.SCREWED_LABORATORY_BLOCK);
+        sameBlockAnd(ModBlocks.SCREWED_LABORATORY_BLOCK, ModBlocks.LABORATORY_BLOCK);
         sameBlock(ModBlocks.LABORATORY_TILES);
         sameBlock(ModBlocks.GRAY_LABORATORY_TILES);
         sameBlock(ModBlocks.MIXED_LABORATORY_TILES);

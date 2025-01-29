@@ -1,7 +1,7 @@
-// 1.21.1	2024-11-27T00:17:29.668050981	Fusion Model Provider: Artemis' Laboratory Blocks
+// 1.21.1	2024-12-08T20:44:03.300717037	Fusion Model Provider: Artemis' Laboratory Blocks
 e8e361a6b619a0c4910c47627f181a13ebd7dd64 assets/laboratoryblocks/models/block/clear_laboratory_screen.json
 2dee894113cb9047c660785c23b9d1bcffa8d9bc assets/laboratoryblocks/models/block/gray_laboratory_tiles.json
-79ed8a0b5fa57a44e1e3119f582a2a960684b666 assets/laboratoryblocks/models/block/laboratory_block.json
+cdd8e45cadc743452a89763eb49512a8c660e8ca assets/laboratoryblocks/models/block/laboratory_block.json
 58da035f4e8c92ab6547d46be402ac4fc8bbfaa1 assets/laboratoryblocks/models/block/laboratory_bookshelf.json
 77d76b61533f4e1043f21f9fa2e40da3cead1b4d assets/laboratoryblocks/models/block/laboratory_glass.json
 0bf131636e827cdb070aeb9fdb60b3fae98ba836 assets/laboratoryblocks/models/block/laboratory_tiles.json
@@ -14,4 +14,4 @@ a4ff2310be084d6e0687316c69d00a6ec77700e8 assets/laboratoryblocks/models/block/mi
 31128a5837ac647199e1348d2c193a4a71e140a0 assets/laboratoryblocks/models/block/right-faced_blue_signaling_laboratory_block.json
 2ab2948409310ec5c2607be38e26725878dcd06c assets/laboratoryblocks/models/block/right-faced_green_signaling_laboratory_block.json
 c38c1bf7eee26f4e7674cd2f493a306ab683a55d assets/laboratoryblocks/models/block/right-faced_red_signaling_laboratory_block.json
-15e425feee68bcfd79799d6c5b727cc686269513 assets/laboratoryblocks/models/block/screwed_laboratory_block.json
+95c98c62acd8c60658d0170ffc445c164c78332c assets/laboratoryblocks/models/block/screwed_laboratory_block.json
